@@ -7,6 +7,7 @@ public class AccountHolder {
 	private String SSN;
 	private double checkingAccountOpeningBalance;
 	private double savingsAccountOpeningBalance;
+
 	
 	public AccountHolder(String firstName, String middleName, String lastName, String SSN, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
 		this.firstName = firstName;
@@ -15,9 +16,6 @@ public class AccountHolder {
 		this.SSN = SSN;
 		this.checkingAccountOpeningBalance = checkingAccountOpeningBalance;
 		this.savingsAccountOpeningBalance = savingsAccountOpeningBalance;
-		System.out.println(firstName + " " + lastName + " " + SSN);
-		System.out.println(checkingAccountOpeningBalance);
-		System.out.println(savingsAccountOpeningBalance);	
 	}
 	
 	public String getFirstName() {
@@ -61,27 +59,14 @@ public class AccountHolder {
 	}
 	
 	*/
-	
-	
-	
-	public static void main(String[] args) {
-		String firstName = "Shelby";
-		String middleName = "Lynn";
-		String lastName = "Johnson";
-		String SSN = "123-45-6789";
-		double checkingAccountOpeningBalance = 122.00;
-		double savingsAccountOpeningBalance = 998.00;
-		
-		AccountHolder a = new AccountHolder(firstName, middleName, lastName, SSN, checkingAccountOpeningBalance, savingsAccountOpeningBalance);
-		System.out.println(a.getFirstName());
-		System.out.println(a.toString());
-		
-	}
-
 	@Override
 	public String toString() {
-		return "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() + "\n" + "SSN: " + getSSN();
+		return "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() 
+		+ "\n" + "SSN: " + getSSN() + "\n" + "Checking Account Balance: $" + getSSN() + 
+		"\n" + "Checking Account Interest Rate: " +getSSN() + "\n" +"Checking Account Balance in 3 years: $" +getSSN()
+		+ "\n" + "Savings Account Balance: $" +getSSN() + "\n" + "Savings Account Interest Rate: " +getSSN()
+		+ "\n" + "Savings Account Balance in 3 years: $" +getSSN();
 	}
 	
-	
+		
 }
