@@ -3,11 +3,10 @@ package com.meritamerica.assignment1;
 public class SavingsAccount {
 	
 	private double balance;
-	private double interestRate;
+	private final double INTERESTRATE = 0.01;
 	
-	public SavingsAccount(double balance, double interestRate) {
+	public SavingsAccount(double balance) {
 		this.balance = balance;
-		this.interestRate = interestRate;
 	}
 	
 	public double getBalance() {
@@ -15,29 +14,27 @@ public class SavingsAccount {
 	}
 	
 	public double getInterestRate() {
-		return this.interestRate;
+		return this.INTERESTRATE;
 	}
 	
 	public boolean withdraw(double amount) {
-		if(amount <= 0 || amount > balance) {
-			System.out.println("Invalid amount or insufficient funds.");
-			return false;
-		} else {
-			balance -= amount;
-			System.out.println("Successfuly withdrew $" + amount + "\n"
-					+ "Your remaining balance is: $" + balance);
-		} return true;
+		if(amount <= balance && amount>0) {
+			this.balance -= amount;
+			System.out.println("You withdrew: $" + amount);
+			System.out.println("Your remaining balance is: $" + balance);
+			return true;
+		}
+		System.out.println("Insufficient Funds.");
+		return false;
 	}
 	
 	public boolean deposit(double amount) {
-		if(amount <= 0) {
-			System.out.println("Invalid amount.");
-			return false;
-		} else {
-			balance += amount;
-			System.out.println("Successfuly deposited $" + amount + "\n"
-					+ "Your remaining balance is: $" + balance);
-		} return true;
+		if(amount > 0) {
+			this.balance += amount;
+			return true;
+		}
+		System.out.println(amount + " - Invalid amount.");
+		return false;
 	}
 	
 	public double futureValue(int years) {
@@ -46,17 +43,18 @@ public class SavingsAccount {
 			System.out.println("Invalid period of time");
 			return -1;
 		} else {
-			futureValue = balance * Math.pow((1 + interestRate), years);
-			System.out.println("Savings account balance in " + years + " years: $" + futureValue);
+			futureValue = balance * Math.pow((1 + INTERESTRATE), years);
 			return futureValue;
 		}
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Savings Account Balance: $" + getBalance() + "\n" +
-				"Savings Account Interest Rate: " + getInterestRate() + "\n" +
-				"Savings Account Balance in 3 years: $" + futureValue(3);
+		return  "Savings Account Balance: $" + getBalance() + "\n" +
+				"Savings Account Interest Rate: " + INTERESTRATE + "%" + "\n" +
+				"Savings Account Balance in 3 years: $" + String.format( "%.2f", futureValue(3));
 	}
+
 	
 }

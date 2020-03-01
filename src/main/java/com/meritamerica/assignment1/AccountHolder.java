@@ -1,12 +1,22 @@
 package com.meritamerica.assignment1;
 
 public class AccountHolder {
+	
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String SSN;
-	private double checkingAccountOpeningBalance;
-	private double savingsAccountOpeningBalance;
+	CheckingAccount checking;
+	SavingsAccount savings;
+	
+	public AccountHolder() {
+		this.firstName = "";
+		this.middleName = "";
+		this.lastName = "";
+		this.SSN = "";
+		this.checking = new CheckingAccount(0.0);
+		this.savings = new SavingsAccount(0.0);
+	}
 
 	
 	public AccountHolder(String firstName, String middleName, String lastName, String SSN, double checkingAccountOpeningBalance, double savingsAccountOpeningBalance) {
@@ -14,8 +24,8 @@ public class AccountHolder {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.SSN = SSN;
-		this.checkingAccountOpeningBalance = checkingAccountOpeningBalance;
-		this.savingsAccountOpeningBalance = savingsAccountOpeningBalance;
+		checking = new CheckingAccount(checkingAccountOpeningBalance);
+		savings = new SavingsAccount(savingsAccountOpeningBalance);
 	}
 	
 	public String getFirstName() {
@@ -50,23 +60,24 @@ public class AccountHolder {
 		this.SSN = SSN;
 	}
 	
-	/* public double getCheckingAccount() {
-		return this.checkingAccount;
+	public CheckingAccount getCheckingAccount() {
+		return checking;
 	}
 	
-	public double getSavingsAccount() {
-		return this.savingsAccount;
+	public SavingsAccount getSavingsAccount() {
+		return savings;
 	}
 	
-	*/
+
 	@Override
 	public String toString() {
 		return "Name: " + getFirstName() + " " + getMiddleName() + " " + getLastName() 
-		+ "\n" + "SSN: " + getSSN() + "\n" + "Checking Account Balance: $" + getSSN() + 
-		"\n" + "Checking Account Interest Rate: " +getSSN() + "\n" +"Checking Account Balance in 3 years: $" +getSSN()
-		+ "\n" + "Savings Account Balance: $" +getSSN() + "\n" + "Savings Account Interest Rate: " +getSSN()
-		+ "\n" + "Savings Account Balance in 3 years: $" +getSSN();
+		+ "\n" + "SSN: " + getSSN() + "\n" +
+		getCheckingAccount().toString() + "\n" +
+		getSavingsAccount().toString(); 
 	}
+
+
 	
-		
 }
+	
